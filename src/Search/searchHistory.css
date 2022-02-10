@@ -1,0 +1,15 @@
+#search-history-list {
+    padding-left: 0;
+}
+
+.search-list-item {
+    cursor: pointer;
+    background-color: grey;
+    list-style-type: none;
+    border-color: darkgrey;
+    max-width: 300px;
+    margin-top: 2px;
+    min-height: 30px;
+    color: lightgrey;
+    font-size: large;
+}

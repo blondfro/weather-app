@@ -1,11 +1,14 @@
 import React from 'react';
-import ForecastCard from "./ForecastCard";
+
+import DayForecast from "./DayForecast";
+import DailyForecast from "./DailyForecast";
 
 function ForecastDisplay() {
 
     return (
         <div>
-            <ForecastCard />
+            <DayForecast />
+            <DailyForecast />
         </div>
     )
 }

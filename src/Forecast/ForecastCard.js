@@ -1,12 +1,14 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function ForecastCard() {
+function ForecastCard({isDaily}) {
     return (
-        <div>
-            <h3 id="city-name" className="card">Austin</h3>
-            <div>
-                <h4 id="todays-date">Feb 9 2022</h4>
+            <div className="card-body">
+                {!isDaily
+                    ? <h4 id="todays-date" className="card-title">Feb 9 2022</h4>
+                    : <h6 className="card-header">Feb 10 2022 </h6>
+                }
+
                 <FontAwesomeIcon icon="sun" />
                 <ul className="list-group list-group-flush borderless">
                     <li className="list-group-item">
@@ -27,7 +29,6 @@ function ForecastCard() {
                     </li>
                 </ul>
             </div>
-        </div>
     )
 }
 

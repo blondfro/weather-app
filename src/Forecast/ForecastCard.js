@@ -5,7 +5,7 @@ function ForecastCard({isDaily, forecast}) {
     return (
             <div className="card-body">
                 {!isDaily
-                    ? <h4 id="todays-date" className="card-title">Feb 9 2022</h4>
+                    ? <h4 id="todays-date" className="card-title">Today's Forecast</h4>
                     : <h6 className="card-header">Feb 10 2022 </h6>
                 }
 

@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 import DayForecast from "./DayForecast";
 import DailyForecast from "./DailyForecast";
 import { mockLocation, mockForecast } from "../mockData/mockDB";
-import {logDOM} from "@testing-library/react";
 
 function ForecastDisplay() {
     const [location, setLocation] = useState(mockLocation);

@@ -5,7 +5,6 @@ function DailyForecast({forecast}) {
     return (
         <div>
             {forecast.map(day => {
-                console.log(day)
                 return  <div key={day} className="card">
                             <ForecastCard isDaily={true} forecast={day}/>
                         </div>

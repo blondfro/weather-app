@@ -1,4 +1,4 @@
-export const location = [
+export const mockLocation =
     {
         "name": "Boston",
         "local_names": {
@@ -33,10 +33,9 @@ export const location = [
         "country": "US",
         "state": "Massachusetts"
     }
-]
 
 
-export const forecast = {
+export const mockForecast = {
     "lat": 42.3603,
     "lon": -71.0583,
     "timezone": "America/New_York",

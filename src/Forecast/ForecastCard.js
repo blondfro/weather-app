@@ -1,12 +1,12 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function ForecastCard({isDaily, forecast}) {
+function ForecastCard({isDaily, forecast, date=""}) {
     return (
             <div className="card-body">
                 {!isDaily
                     ? <h4 id="todays-date" className="card-title">Today's Forecast</h4>
-                    : <h6 className="card-header">Feb 10 2022 </h6>
+                    : <h6 className="card-header">{date}</h6>
                 }
 
                 <FontAwesomeIcon icon="sun" />

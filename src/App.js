@@ -9,19 +9,24 @@ function App() {
     const [currDay, setCurrDay] = useState("");
 
     useEffect(()=> {
-        const getData = () => {
-            const day = dayjs().format("MMM D YYYY");
-            setCurrDay(day);
-        }
-
         getData();
-    }, [])
+    }, []);
+
+    const getData = () => {
+        const day = dayjs().format("MMM D YYYY");
+        setCurrDay(day);
+    };
+
+    const getNextDay = (addValue) => {
+        const nextDay = dayjs().add(addValue, "day").format("MMM D YYYY");
+        return nextDay
+    }
 
   return (
     <div className="App">
         <Banner currDate={currDay}/>
         <Search />
-        <ForecastDisplay />
+        <ForecastDisplay nextDate = {getNextDay}/>
     </div>
   );
 }

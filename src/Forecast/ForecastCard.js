@@ -12,23 +12,34 @@ function ForecastCard({isDaily, forecast, date=""}) {
                 <FontAwesomeIcon icon="sun" />
                 <ul className="list-group list-group-flush borderless">
                     <li className="list-group-item">
-                        <h5>Temp: </h5>
+                        { !isDaily
+                            ? <h5>Temp: </h5>
+                            : <h7>Temp: </h7>
+                        }
                         {isDaily
                             ? <p className="card-text">{forecast.temp.day}</p>
                             : <p className="card-text">{forecast.temp}</p>
                         }
-
                     </li>
                     <li className="list-group-item">
-                        <h5>Wind Speed: </h5>
+                        { !isDaily
+                            ? <h5>Wind Speed: </h5>
+                            : <h7>Temp: </h7>
+                        }
                         <p className="card-text">{forecast.wind_speed}</p>
                     </li>
                     <li className="list-group-item">
-                        <h5>Humidity: </h5>
+                        { !isDaily
+                            ? <h5>Humidity: </h5>
+                            : <h7>Temp: </h7>
+                        }
                         <p className="card-text">{forecast.humidity}%</p>
                     </li>
                     <li className="list-group-item">
-                        <h5>UV Index: </h5>
+                        { !isDaily
+                            ? <h5>UV Index: </h5>
+                            : <h7>Temp: </h7>
+                        }
                         <p className="card-text">{forecast.uvi}</p>
                     </li>
                 </ul>

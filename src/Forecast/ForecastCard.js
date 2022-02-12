@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./forecastCard.css";
 
-function ForecastCard({isDaily, forecast, date=""}) {
+function ForecastCard({isDaily, forecast, date="", condition}) {
     return (
             <div className="card-body">
                 {isDaily
@@ -10,7 +10,7 @@ function ForecastCard({isDaily, forecast, date=""}) {
                     : null
                 }
 
-                <FontAwesomeIcon icon="sun" />
+                <FontAwesomeIcon icon={condition[0].icon} style={{color: condition[0].color}}/>
                 <ul className="list-group list-group-flush borderless">
                     <li className="list-group-item data-display">
                         { !isDaily

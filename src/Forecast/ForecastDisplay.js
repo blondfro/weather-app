@@ -2,6 +2,11 @@ import React, {useState} from 'react';
 
 import DayForecast from "./DayForecast";
 import DailyForecast from "./DailyForecast";
+
+import "./forecastDisplay.css";
+
+
+
 import { mockLocation, mockForecast } from "../mockData/mockDB";
 
 function ForecastDisplay({ nextDate }) {
@@ -9,7 +14,7 @@ function ForecastDisplay({ nextDate }) {
     const [forecast, setForecast] = useState(mockForecast);
 
     return (
-        <div>
+        <div className="forecast-section">
             <DayForecast location={location} forecast={forecast.current}/>
             <DailyForecast forecast={forecast.daily} nextDate = {nextDate}/>
         </div>

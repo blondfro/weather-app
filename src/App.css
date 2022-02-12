@@ -1,4 +1,14 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
+  display: grid;
+  grid-template-rows: 100px auto;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
   text-align: center;
 }
 

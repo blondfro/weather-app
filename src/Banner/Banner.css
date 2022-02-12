@@ -1,4 +1,7 @@
-.app-title-section{
+.app-title-section {
+    grid-row: 1 / 2;
+    grid-column: 1 / 6;
+
     background-color: #282c34;
     color: lightblue;
     text-align: center;

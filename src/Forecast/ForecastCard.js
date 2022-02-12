@@ -1,5 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./forecastCard.css";
 
 function ForecastCard({isDaily, forecast, date=""}) {
     return (
@@ -11,7 +12,7 @@ function ForecastCard({isDaily, forecast, date=""}) {
 
                 <FontAwesomeIcon icon="sun" />
                 <ul className="list-group list-group-flush borderless">
-                    <li className="list-group-item">
+                    <li className="list-group-item data-display">
                         { !isDaily
                             ? <h5>Temp: </h5>
                             : <h6>Temp: </h6>
@@ -21,24 +22,24 @@ function ForecastCard({isDaily, forecast, date=""}) {
                             : <p className="card-text">{forecast.temp}</p>
                         }
                     </li>
-                    <li className="list-group-item">
+                    <li className="list-group-item data-display">
                         { !isDaily
                             ? <h5>Wind Speed: </h5>
-                            : <h6>Temp: </h6>
+                            : <h6>Wind Speed: </h6>
                         }
                         <p className="card-text">{forecast.wind_speed}</p>
                     </li>
-                    <li className="list-group-item">
+                    <li className="list-group-item data-display">
                         { !isDaily
                             ? <h5>Humidity: </h5>
-                            : <h6>Temp: </h6>
+                            : <h6>Humidity: </h6>
                         }
                         <p className="card-text">{forecast.humidity}%</p>
                     </li>
-                    <li className="list-group-item">
+                    <li className="list-group-item data-display">
                         { !isDaily
                             ? <h5>UV Index: </h5>
-                            : <h6>Temp: </h6>
+                            : <h6>UV Index: </h6>
                         }
                         <p className="card-text">{forecast.uvi}</p>
                     </li>

@@ -1,0 +1,19 @@
+.daily-forecast-display {
+    grid-row: 2;
+    grid-column: 1 / 5;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.daily-forecast-header {
+    grid-row: 1;
+    grid-column: 1 / 5;
+}
+
+.daily-forecast-list {
+    grid-row: 2;
+    grid-column: 1 / 5;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+}

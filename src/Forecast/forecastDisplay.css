@@ -1,0 +1,8 @@
+.forecast-section {
+    grid-column: 2 / 7;
+
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+}
+

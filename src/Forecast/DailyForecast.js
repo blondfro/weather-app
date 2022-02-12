@@ -7,7 +7,7 @@ function DailyForecast({forecast, nextDate}) {
             {forecast.map((day, index) => {
                 let date = nextDate(index + 1)
                 return (
-                    <div key={day} className="card">
+                    <div key={index} className="card">
                         <ForecastCard isDaily={true} forecast={day} date={date}/>
                     </div>
                 )

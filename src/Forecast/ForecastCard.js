@@ -14,7 +14,7 @@ function ForecastCard({isDaily, forecast, date=""}) {
                     <li className="list-group-item">
                         { !isDaily
                             ? <h5>Temp: </h5>
-                            : <h7>Temp: </h7>
+                            : <h6>Temp: </h6>
                         }
                         {isDaily
                             ? <p className="card-text">{forecast.temp.day}</p>
@@ -24,21 +24,21 @@ function ForecastCard({isDaily, forecast, date=""}) {
                     <li className="list-group-item">
                         { !isDaily
                             ? <h5>Wind Speed: </h5>
-                            : <h7>Temp: </h7>
+                            : <h6>Temp: </h6>
                         }
                         <p className="card-text">{forecast.wind_speed}</p>
                     </li>
                     <li className="list-group-item">
                         { !isDaily
                             ? <h5>Humidity: </h5>
-                            : <h7>Temp: </h7>
+                            : <h6>Temp: </h6>
                         }
                         <p className="card-text">{forecast.humidity}%</p>
                     </li>
                     <li className="list-group-item">
                         { !isDaily
                             ? <h5>UV Index: </h5>
-                            : <h7>Temp: </h7>
+                            : <h6>Temp: </h6>
                         }
                         <p className="card-text">{forecast.uvi}</p>
                     </li>

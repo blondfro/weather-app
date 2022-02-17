@@ -1,18 +1,19 @@
-import './App.css';
-import dayjs from "dayjs";
+import {createContext, useEffect, useState} from "react";
+
 import Banner from "./Banner/Banner";
 import Search from "./Search/Search";
 import ForecastDisplay from "./Forecast/ForecastDisplay";
-import {useEffect, useState} from "react";
+
+import './App.css';
+import dayjs from "dayjs";
+
+export const WeatherContext = createContext();
 
 function App() {
     const [currDay, setCurrDay] = useState("");
+    const [searchLoc, setSearchLoc] = useState("")
 
-    useEffect(()=> {
-        getData();
-    }, []);
-
-    const getData = () => {
+    const getCurrDate = () => {
         const day = dayjs().format("MMM D YYYY");
         setCurrDay(day);
     };
@@ -22,11 +23,25 @@ function App() {
         return nextDay
     }
 
+
+    useEffect(()=> {
+        getCurrDate();
+    }, []);
+
+   const handleChange = (event) => {
+       const { avalue } = event.target;
+       setSearchLoc(avalue);
+   }
+
+
   return (
     <div className="App">
-        <Banner currDate={currDay}/>
-        <Search />
-        <ForecastDisplay nextDate = {getNextDay}/>
+        <WeatherContext.Provider
+            value={{ currDay, handleChange }} >
+            <Banner />
+            <Search />
+            <ForecastDisplay nextDate = {getNextDay}/>
+        </WeatherContext.Provider>
     </div>
   );
 }

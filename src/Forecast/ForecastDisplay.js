@@ -8,9 +8,8 @@ import "./forecastDisplay.css";
 import {weatherConditions} from "./weatherConditions";
 import {WeatherContext} from "../App";
 
-function ForecastDisplay({ nextDate }) {
+function ForecastDisplay() {
 
-    const { location, forecast } = useContext(WeatherContext);
 
     const checkCondition = (condition) =>
          weatherConditions.filter(item => item.condition === condition)
@@ -18,12 +17,8 @@ function ForecastDisplay({ nextDate }) {
     return (
         <div className="forecast-section">
             <DayForecast
-                location={location}
-                forecast={forecast.current}
                 checkCondition={checkCondition}/>
             <DailyForecast
-                forecast={forecast.daily}
-                nextDate = {nextDate}
                 checkCondition={checkCondition}/>
         </div>
     )

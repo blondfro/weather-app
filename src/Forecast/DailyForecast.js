@@ -1,9 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import ForecastCard from "./ForecastCard";
 
 import "./dailyForecast.css"
+import {WeatherContext} from "../App";
 
-function DailyForecast({forecast, nextDate, checkCondition}) {
+function DailyForecast({ checkCondition }) {
+    const {getNextDay, dailyForecast} = useContext(WeatherContext);
 
     return (
         <div className="daily-forecast-display">
@@ -11,8 +13,8 @@ function DailyForecast({forecast, nextDate, checkCondition}) {
                 8 Day Forecast
             </h3>
             <div className="daily-forecast-list">
-                {forecast.map((day, index) => {
-                    let date = nextDate(index + 1);
+                {dailyForecast.map((day, index) => {
+                    let date = getNextDay(index + 1);
                     const condition = checkCondition(day.weather[0].main)
                     return (
                         <div key={index} className="card">

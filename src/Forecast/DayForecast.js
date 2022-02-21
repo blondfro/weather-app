@@ -1,17 +1,21 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import ForecastCard from "./ForecastCard";
 
 import "./dayForecast.css"
+import {WeatherContext} from "../App";
 
-function DayForecast({location, forecast, checkCondition}) {
-    const condition = checkCondition(forecast.weather[0].main)
+function DayForecast({ checkCondition}) {
+    const { location, currForecast, forecast } = useContext(WeatherContext);
+    let main = forecast.current.weather[0].main;
+    const condition = checkCondition(main);
+
 
     return (
         <div className="card current-day-section">
             <h3 id="city-name" className="card-header">
                 {location.name}, {location.state} - Today's Forecast
             </h3>
-            <ForecastCard isDaily={false} forecast={forecast} condition={condition} />
+            <ForecastCard isDaily={false} forecast={currForecast} condition={condition} />
         </div>
     )
 }

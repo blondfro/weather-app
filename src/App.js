@@ -16,6 +16,8 @@ function App() {
     const [currDay, setCurrDay] = useState("");
     const [searchLoc, setSearchLoc] = useState("");
     const [location, setLocation] = useState(mockLocation);
+    const [currForecast, setCurrForecast] = useState({});
+    const [dailyForecast, setDailyForecast] = useState([]);
     const [forecast, setForecast] = useState(mockForecast);
 
     // day.js
@@ -40,31 +42,41 @@ function App() {
     const getForecast = async () => {
         await fetch("mockForecastDB.json")
             .then(res => res.json())
-            .then(data => setForecast(data));
+            .then(data => {
+                setForecast(data);
+                setCurrForecast(data.current);
+                setDailyForecast(data.daily);
+            });
     }
-
-
 
 
     useEffect(()=> {
         getCurrDate();
         getLocation();
-        getForecast()
+        getForecast();
     }, []);
 
    const handleChange = (event) => {
-       const { avalue } = event.target;
-       setSearchLoc(avalue);
+       const { value } = event.target;
+       setSearchLoc(value);
    }
 
 
   return (
     <div className="App">
         <WeatherContext.Provider
-            value={{ currDay, handleChange, location, forecast }} >
+            value={{
+                currDay,
+                location,
+                forecast,
+                currForecast,
+                dailyForecast,
+                handleChange,
+                getNextDay,
+            }} >
             <Banner />
             <Search />
-            <ForecastDisplay nextDate = {getNextDay}/>
+            <ForecastDisplay />
         </WeatherContext.Provider>
     </div>
   );

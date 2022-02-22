@@ -3,9 +3,10 @@ import ForecastCard from "./ForecastCard";
 
 import "./dailyForecast.css"
 import {WeatherContext} from "../App";
+import { getNextDay} from "../utils/getDate";
 
 function DailyForecast({ checkCondition }) {
-    const {getNextDay, dailyForecast} = useContext(WeatherContext);
+    const {dailyForecast} = useContext(WeatherContext);
 
     return (
         <div className="daily-forecast-display">

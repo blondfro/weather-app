@@ -5,10 +5,10 @@ import Search from "./Search/Search";
 import ForecastDisplay from "./Forecast/ForecastDisplay";
 
 import './App.css';
-import dayjs from "dayjs";
 
 
 import { mockLocation, mockForecast } from "./mockData/mockDB";
+
 
 export const WeatherContext = createContext();
 
@@ -20,16 +20,6 @@ function App() {
     const [dailyForecast, setDailyForecast] = useState([]);
     const [forecast, setForecast] = useState(mockForecast);
 
-    // day.js
-    const getCurrDate = () => {
-        const day = dayjs().format("MMM D YYYY");
-        setCurrDay(day);
-    };
-
-    const getNextDay = (addValue) => {
-        const nextDay = dayjs().add(addValue, "day").format("MMM D YYYY");
-        return nextDay
-    }
 
     // get forecast section
     const getLocation = async () => {
@@ -51,7 +41,6 @@ function App() {
 
 
     useEffect(()=> {
-        getCurrDate();
         getLocation();
         getForecast();
     }, []);
@@ -66,13 +55,11 @@ function App() {
     <div className="App">
         <WeatherContext.Provider
             value={{
-                currDay,
                 location,
                 forecast,
                 currForecast,
                 dailyForecast,
                 handleChange,
-                getNextDay,
             }} >
             <Banner />
             <Search />

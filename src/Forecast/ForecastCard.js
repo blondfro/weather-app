@@ -18,8 +18,8 @@ function ForecastCard({isDaily, forecast, date="", condition}) {
                             : <h6>Temp: </h6>
                         }
                         {isDaily
-                            ? <p className="card-text">{forecast.temp.day}&deg;</p>
-                            : <p className="card-text">{forecast.temp}&deg;</p>
+                            ? <p className="card-text">{forecast.temp.day}</p>
+                            : <p className="card-text">{forecast.temp}</p>
                         }
                     </li>
                     <li className="list-group-item data-display">

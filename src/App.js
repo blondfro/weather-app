@@ -8,42 +8,17 @@ import './App.css';
 
 
 import { mockLocation, mockForecast } from "./mockData/mockDB";
+import useMockFetchWeather from "./utils/useMockFetchWeather";
 
 
 export const WeatherContext = createContext();
 
 function App() {
-    const [currDay, setCurrDay] = useState("");
     const [searchLoc, setSearchLoc] = useState("");
-    const [location, setLocation] = useState(mockLocation);
-    const [currForecast, setCurrForecast] = useState({});
-    const [dailyForecast, setDailyForecast] = useState([]);
     const [forecast, setForecast] = useState(mockForecast);
 
+    const { location, currForecast, dailyForecast } = useMockFetchWeather();
 
-    // get forecast section
-    const getLocation = async () => {
-        const fetched = await fetch("mockLocationDB.json")
-            .then(res => res.json());
-
-        setLocation(fetched);
-    }
-
-    const getForecast = async () => {
-        await fetch("mockForecastDB.json")
-            .then(res => res.json())
-            .then(data => {
-                setForecast(data);
-                setCurrForecast(data.current);
-                setDailyForecast(data.daily);
-            });
-    }
-
-
-    useEffect(()=> {
-        getLocation();
-        getForecast();
-    }, []);
 
    const handleChange = (event) => {
        const { value } = event.target;
@@ -56,7 +31,6 @@ function App() {
         <WeatherContext.Provider
             value={{
                 location,
-                forecast,
                 currForecast,
                 dailyForecast,
                 handleChange,

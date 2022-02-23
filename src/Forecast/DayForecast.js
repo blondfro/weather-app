@@ -5,8 +5,8 @@ import "./dayForecast.css"
 import {WeatherContext} from "../App";
 
 function DayForecast({ checkCondition}) {
-    const { location, currForecast, forecast } = useContext(WeatherContext);
-    let main = forecast.current.weather[0].main;
+    const { location, currForecast,} = useContext(WeatherContext);
+    let main = currForecast.weather[0].main;
     const condition = checkCondition(main);
 
 

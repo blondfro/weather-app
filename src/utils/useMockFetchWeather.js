@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState } from 'react';
 
-import { mockLocation, mockForecast } from "../mockData/mockDB";
+
 
 function useMockFetchWeather() {
-    const [currForecast, setCurrForecast] = useState(mockForecast.current);
-    const [dailyForecast, setDailyForecast] = useState(mockForecast.daily)
+    const [currForecast, setCurrForecast] = useState(null);
+    const [dailyForecast, setDailyForecast] = useState(null)
     const [location, setLocation] = useState({
         name: "",
         state: "",
@@ -13,18 +13,20 @@ function useMockFetchWeather() {
         long: 0
     });
 
-    const getLocation = async () => {
+    const getLocation = async (searchLocation) => {
         const fetched = await fetch("mockLocationDB.json")
             .then(res => res.json())
             .then(data => data);
 
         setLocation({
-            name: fetched.name,
+            name: searchLocation,
             state: fetched.state,
             country: fetched.country,
             lat: fetched.lat,
             long: fetched.lon
         });
+
+        getForecast();
     }
 
     const getForecast = async () => {
@@ -36,18 +38,11 @@ function useMockFetchWeather() {
         setDailyForecast(weather.daily);
     }
 
-
-    useEffect(()=> {
-        getLocation();
-        getForecast();
-    }, [])
-
-
-
     return {
         location,
         currForecast,
-        dailyForecast
+        dailyForecast,
+        getLocation
     }
 }
 

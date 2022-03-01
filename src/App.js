@@ -7,7 +7,7 @@ import ForecastDisplay from "./Forecast/ForecastDisplay";
 import './App.css';
 
 
-import { mockLocation, mockForecast } from "./mockData/mockDB";
+
 import useMockFetchWeather from "./utils/useMockFetchWeather";
 
 
@@ -15,14 +15,19 @@ export const WeatherContext = createContext();
 
 function App() {
     const [searchLoc, setSearchLoc] = useState("");
-    const [forecast, setForecast] = useState(mockForecast);
 
-    const { location, currForecast, dailyForecast } = useMockFetchWeather();
+
+    const { location, currForecast, dailyForecast, getLocation } = useMockFetchWeather();
 
 
    const handleChange = (event) => {
        const { value } = event.target;
        setSearchLoc(value);
+   }
+
+   const handleSearch = () => {
+       getLocation(searchLoc);
+       setSearchLoc("")
    }
 
 
@@ -34,10 +39,12 @@ function App() {
                 currForecast,
                 dailyForecast,
                 handleChange,
+                handleSearch
             }} >
             <Banner />
             <Search />
-            <ForecastDisplay />
+            {!currForecast ? null : <ForecastDisplay />}
+
         </WeatherContext.Provider>
     </div>
   );

@@ -1,14 +1,19 @@
-import React, {useContext, useState} from 'react';
+import React, { useContext } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {WeatherContext} from "../App";
 
 
 function SearchForm() {
 
-    const {handleChange} = useContext(WeatherContext)
+    const {handleChange, handleSearch} = useContext(WeatherContext);
+
+    const onSubmit = e => {
+        e.preventDefault();
+        handleSearch();
+    }
 
     return (
-        <form id="search-form">
+        <form id="search-form" onSubmit={onSubmit}>
             <label htmlFor="search-input">
                 Search
                 <input
@@ -17,7 +22,7 @@ function SearchForm() {
                     onChange={handleChange}
                 />
             </label>
-            <button type="button" id="search-btn">
+            <button type="button" id="search-btn" onClick={onSubmit}>
                 <FontAwesomeIcon icon="search" />
             </button>
         </form>

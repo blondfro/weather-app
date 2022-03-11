@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-
-
 function useMockFetchWeather() {
     const [currForecast, setCurrForecast] = useState(null);
     const [dailyForecast, setDailyForecast] = useState(null)
@@ -26,7 +24,7 @@ function useMockFetchWeather() {
             long: fetched.lon
         });
 
-        getForecast();
+        await getForecast();
     }
 
     const getForecast = async () => {

@@ -1,4 +1,4 @@
-import {createContext, useEffect, useState} from "react";
+import {createContext, useState} from "react";
 
 import Banner from "./Banner/Banner";
 import Search from "./Search/Search";
@@ -6,9 +6,7 @@ import ForecastDisplay from "./Forecast/ForecastDisplay";
 
 import './App.css';
 
-
-
-import useMockFetchWeather from "./utils/useMockFetchWeather";
+import useFetchWeather from "./utils/useFetchWeather";
 
 
 export const WeatherContext = createContext();
@@ -16,9 +14,7 @@ export const WeatherContext = createContext();
 function App() {
     const [searchLoc, setSearchLoc] = useState("");
 
-
-    const { location, currForecast, dailyForecast, getLocation } = useMockFetchWeather();
-
+    const {location, currForecast, dailyForecast, gatherWeather } = useFetchWeather();
 
    const handleChange = (event) => {
        const { value } = event.target;
@@ -26,10 +22,9 @@ function App() {
    }
 
    const handleSearch = () => {
-       getLocation(searchLoc);
+       gatherWeather(searchLoc);
        setSearchLoc("")
    }
-
 
   return (
     <div className="App">

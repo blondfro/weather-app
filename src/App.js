@@ -37,6 +37,7 @@ function App() {
         <WeatherContext.Provider
             value={{
                 location,
+                searchLoc,
                 currForecast,
                 dailyForecast,
                 handleChange,

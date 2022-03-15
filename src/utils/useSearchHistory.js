@@ -18,17 +18,33 @@ function useSearchHistory() {
 
     const saveSearchHistory = async (searchItem) => {
         let savedSearch = []
+        let searchLwrCase = searchItem.toLowerCase();
+
         if (localStorage.getItem("searchHistory")) {
             savedSearch = await JSON.parse(localStorage.getItem("searchHistory"));
-            if (!savedSearch.includes(searchItem)) {
-                savedSearch.push(searchItem);
+            let lwrCaseHistory = savedSearch.map(item => {
+                let newItem = item.toLowerCase();
+                return newItem
+            });
+            if (!lwrCaseHistory.includes(searchLwrCase)) {
+                savedSearch.push(searchLwrCase);
             }
         } else {
-            savedSearch.push(searchItem);
+            savedSearch.push(searchLwrCase);
         }
 
-        localStorage.setItem("searchHistory", JSON.stringify(savedSearch));
-        setSearchHistory(savedSearch);
+
+        let upprCaseHistory = savedSearch.map(item => {
+            let itemArr = item.split(" ");
+            let newItem = itemArr.map(word => {
+                let newWord = word.charAt(0).toUpperCase() + word.slice(1);
+                return newWord
+            }).join(" ");
+            return newItem
+        });
+        localStorage.setItem("searchHistory", JSON.stringify(upprCaseHistory));
+        console.log(upprCaseHistory);
+        setSearchHistory(upprCaseHistory);
     }
 
     return {

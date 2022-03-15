@@ -6,7 +6,6 @@ import "./search.css";
 
 function Search() {
 
-
     return (
         <div className="search-section">
             <SearchForm />

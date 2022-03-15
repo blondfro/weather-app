@@ -1,10 +1,15 @@
-import React, {useState} from 'react';
+import React, {useEffect} from 'react';
 import "./searchHistory.css";
+import useSearchHistory from "../utils/useSearchHistory";
 
-const mockHistory = ["Austin", "Minneapolis", "Boston"];
 
 function SearchHistory() {
-    const [searchHistory, setSearchHistory] = useState(mockHistory);
+    const { searchHistory, getSearchHistory } = useSearchHistory();
+
+    useEffect(()=> {
+        getSearchHistory();
+
+    }, [searchHistory])
 
     return (
         <>

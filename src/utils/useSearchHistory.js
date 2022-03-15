@@ -1,37 +1,41 @@
 import  {useState} from 'react';
 
-const mockHistory = ["Austin", "Minneapolis", "Boston"];
+// const mockHistory = ["Austin", "Minneapolis", "Boston"];
 
-function UseSearchHistory() {
-    const [ searchHistory, setSearchHistory ] = useState( [mockHistory])
+function useSearchHistory() {
+    const [ searchHistory, setSearchHistory ] = useState( [])
 
-    const getSearchHistory = () => {
+
+    const getSearchHistory = async () => {
         let history = [];
 
         if (localStorage.getItem("searchHistory")){
-            history = JSON.parse(localStorage.getItem("searchHistory"));
-            setSearchHistory(history)
-        } else {
-            setSearchHistory(history)
+            history = await JSON.parse(localStorage.getItem("searchHistory"));
         }
+        setSearchHistory(history)
     }
 
 
-    const saveSearchHistory = (searchItem) => {
+    const saveSearchHistory = async (searchItem) => {
         let savedSearch = []
         if (localStorage.getItem("searchHistory")) {
-            savedSearch = JSON.parse(localStorage.getItem("searchHistory"));
+            savedSearch = await JSON.parse(localStorage.getItem("searchHistory"));
             if (!savedSearch.includes(searchItem)) {
                 savedSearch.push(searchItem);
             }
         } else {
-            searchHistory.push(searchItem);
+            savedSearch.push(searchItem);
         }
+
+        localStorage.setItem("searchHistory", JSON.stringify(savedSearch));
         setSearchHistory(savedSearch);
-        localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
     }
 
-    return { searchHistory, getSearchHistory, saveSearchHistory }
+    return {
+        searchHistory,
+        getSearchHistory,
+        saveSearchHistory
+    }
 }
 
-export default UseSearchHistory;
+export default useSearchHistory;

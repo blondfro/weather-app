@@ -19,7 +19,6 @@ function useFetchWeather() {
             .then(res => res.json())
             .then(data => {
                 if (data) {
-                    console.log(data[0])
                     return {
                         name: data[0].name,
                         state: data[0].state,
@@ -38,7 +37,6 @@ function useFetchWeather() {
         return await fetch(`${BASE_URL}${LATLONG_URL}lat=${lat}&lon=${long}&units=${units}&appid=${API_KEY}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data) {
                     return data
                 }

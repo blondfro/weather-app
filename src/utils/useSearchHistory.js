@@ -43,7 +43,6 @@ function useSearchHistory() {
             return newItem
         });
         localStorage.setItem("searchHistory", JSON.stringify(upprCaseHistory));
-        console.log(upprCaseHistory);
         setSearchHistory(upprCaseHistory);
     }
 

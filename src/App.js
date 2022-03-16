@@ -26,10 +26,15 @@ function App() {
        setSearchLoc(value);
    }
 
-   const handleSearch = () => {
-       saveSearchHistory(searchLoc);
-       gatherWeather(searchLoc);
-       setSearchLoc("")
+   const handleSearch = (searchItem) => {
+       if (searchItem) {
+           gatherWeather(searchItem);
+       } else {
+           saveSearchHistory(searchLoc);
+           gatherWeather(searchLoc);
+           setSearchLoc("")
+       }
+
    }
 
   return (

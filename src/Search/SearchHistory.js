@@ -5,25 +5,28 @@ import {WeatherContext} from "../App";
 
 
 function SearchHistory() {
-    const { searchHistory, getSearchHistory } = useSearchHistory();
+    const { searchHistory, getSearchHistory, clearSearchHistory } = useSearchHistory();
     const { handleSearch } = useContext(WeatherContext);
 
     useEffect(()=> {
-        getSearchHistory();
+        const interval = setInterval(()=> {
+            getSearchHistory();
+        }, 1000)
 
-    }, [searchHistory])
+        return ()=>clearInterval(interval)
+
+    }, [])
 
     const onSearch = (e)=> {
         e.preventDefault();
         let searchName = e.target.innerText.toLowerCase();
-
-        console.log(searchName);
         handleSearch(searchName);
     }
 
     return (
         <>
             <h3>Search History</h3>
+            <button onClick={clearSearchHistory}>Clear History</button>
             <ul id="search-history-list">
                 {searchHistory.map((item, index) =>
                     <li

@@ -46,10 +46,16 @@ function useSearchHistory() {
         setSearchHistory(upprCaseHistory);
     }
 
+    const clearSearchHistory = () => {
+        localStorage.removeItem("searchHistory");
+        setSearchHistory([])
+    }
+
     return {
         searchHistory,
         getSearchHistory,
-        saveSearchHistory
+        saveSearchHistory,
+        clearSearchHistory
     }
 }
 

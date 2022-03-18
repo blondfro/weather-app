@@ -1,20 +1,22 @@
 #search-history-list {
-    padding-left: 0;
+    padding-left: 3rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .search-list-item {
     display: flex;
     justify-content: space-between;
 
-    cursor: pointer;
-
+    /*cursor: pointer;*/
     background-color: grey;
+    border: 2px solid;
     list-style-type: none;
     border-color: darkgrey;
     max-width: 300px;
     margin-top: 2px;
     min-height: 30px;
-    color: lightgrey;
+    color: white;
     font-size: large;
 }
 
@@ -25,8 +27,32 @@
 
 .search-list-item > p {
     margin: 10px;
+    cursor: pointer;
+}
+
+button {
+    /*background-color: rgba(0,0,0,10%);*/
+    border: 2px solid darkgrey;
+    color: black;
+    padding: .1rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 
 .search-list-item > button {
-    margin: 10px;
+    margin: .1rem .5rem;
+    background-color: rgba(0,0,0,0%);
+    border: none;
+    color: darkred;
+    padding: .1rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+}
+
+.search-list-item > button:hover {
+    color: red;
 }

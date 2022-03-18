@@ -18,8 +18,8 @@ function ForecastCard({isDaily, forecast, date="", condition}) {
                             : <h6>Temp: </h6>
                         }
                         {isDaily
-                            ? <p className="card-text">{forecast.temp.day}</p>
-                            : <p className="card-text">{forecast.temp}</p>
+                            ? <p className="card-text">{Math.round(forecast.temp.day)}&deg;</p>
+                            : <p className="card-text">{Math.round(forecast.temp)}&deg;</p>
                         }
                     </li>
                     <li className="list-group-item data-display">
@@ -27,7 +27,7 @@ function ForecastCard({isDaily, forecast, date="", condition}) {
                             ? <h5>Wind Speed: </h5>
                             : <h6>Wind Speed: </h6>
                         }
-                        <p className="card-text">{forecast.wind_speed}</p>
+                        <p className="card-text">{Math.round(forecast.wind_speed)} mph</p>
                     </li>
                     <li className="list-group-item data-display">
                         { !isDaily

@@ -13,3 +13,13 @@
     color: lightgrey;
     font-size: large;
 }
+
+.search-list-item > p {
+    padding-left: 10px;
+    float: left;
+}
+
+.search-list-item > button {
+    margin-right: 10px;
+    float: right;
+}

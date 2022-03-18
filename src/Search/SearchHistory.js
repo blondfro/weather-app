@@ -3,9 +3,10 @@ import "./searchHistory.css";
 import useSearchHistory from "../utils/useSearchHistory";
 import {WeatherContext} from "../App";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function SearchHistory() {
-    const { searchHistory, getSearchHistory, clearSearchHistory } = useSearchHistory();
+    const { searchHistory, getSearchHistory, clearSearchHistory, removeSearchItem } = useSearchHistory();
     const { handleSearch } = useContext(WeatherContext);
 
     useEffect(()=> {
@@ -32,8 +33,12 @@ function SearchHistory() {
                     <li
                         key={index}
                         className="search-list-item"
-                        onClick={onSearch}
-                    >{item}</li>
+                    >
+                        <p onClick={onSearch}>{item}</p>
+                        <button onClick={() => removeSearchItem(item)}>
+                            <FontAwesomeIcon icon="trash-can" />
+                        </button>
+                    </li>
                 )
                 }
             </ul>

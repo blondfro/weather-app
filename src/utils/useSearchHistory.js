@@ -5,7 +5,6 @@ import  {useState} from 'react';
 function useSearchHistory() {
     const [ searchHistory, setSearchHistory ] = useState( [])
 
-
     const getSearchHistory = async () => {
         let history = [];
 
@@ -51,11 +50,19 @@ function useSearchHistory() {
         setSearchHistory([])
     }
 
+    const removeSearchItem = (keyName) => {
+        const updateHistory = searchHistory.filter(item => item !== keyName);
+        console.log(updateHistory);
+        localStorage.setItem("searchHistory", JSON.stringify(updateHistory))
+        setSearchHistory(updateHistory);
+    }
+
     return {
         searchHistory,
         getSearchHistory,
         saveSearchHistory,
-        clearSearchHistory
+        clearSearchHistory,
+        removeSearchItem
     }
 }
 

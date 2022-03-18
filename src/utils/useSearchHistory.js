@@ -52,7 +52,6 @@ function useSearchHistory() {
 
     const removeSearchItem = (keyName) => {
         const updateHistory = searchHistory.filter(item => item !== keyName);
-        console.log(updateHistory);
         localStorage.setItem("searchHistory", JSON.stringify(updateHistory))
         setSearchHistory(updateHistory);
     }

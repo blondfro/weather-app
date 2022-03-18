@@ -3,7 +3,11 @@
 }
 
 .search-list-item {
+    display: flex;
+    justify-content: space-between;
+
     cursor: pointer;
+
     background-color: grey;
     list-style-type: none;
     border-color: darkgrey;
@@ -14,12 +18,15 @@
     font-size: large;
 }
 
+.search-list-item:hover {
+    background-color: lightgrey;
+    color: black;
+}
+
 .search-list-item > p {
-    padding-left: 10px;
-    float: left;
+    margin: 10px;
 }
 
 .search-list-item > button {
-    margin-right: 10px;
-    float: right;
+    margin: 10px;
 }

@@ -1,6 +1,6 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import "./Banner.css";
-import {WeatherContext} from "../App";
+
 import { getCurrDate } from "../utils/getDate";
 
 function Banner() {
@@ -8,7 +8,7 @@ function Banner() {
     return (
         <div className="app-title-section">
             <h1>Weather Dashboard</h1>
-            <h2>{currDay}</h2>
+            <h2>{currDay.name}, {currDay.date}</h2>
         </div>
     )
 }

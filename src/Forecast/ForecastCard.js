@@ -2,11 +2,11 @@ import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./forecastCard.css";
 
-function ForecastCard({isDaily, forecast, date="", condition}) {
+function ForecastCard({isDaily, forecast, day= {}, condition}) {
     return (
             <div className="card-body">
                 {isDaily
-                    ? <h6 className="card-header">{date}</h6>
+                    ? <h6 className="card-header">{day.name}, {day.date}</h6>
                     : null
                 }
 

@@ -17,12 +17,12 @@ function DailyForecast({ checkCondition }) {
                 !dailyForecast
                     ? null
                     : <div className="daily-forecast-list">
-                        {dailyForecast.map((day, index) => {
-                            let date = getNextDay(index + 1);
-                            const condition = checkCondition(day.weather[0].main)
+                        {dailyForecast.map((nextDay, index) => {
+                            let day = getNextDay(index + 1);
+                            const condition = checkCondition(nextDay.weather[0].main)
                             return (
                                 <div key={index} className="card">
-                                    <ForecastCard isDaily={true} forecast={day} date={date} condition={condition}/>
+                                    <ForecastCard isDaily={true} forecast={nextDay} day={day} condition={condition}/>
                                 </div>
                             )
                         } )}
